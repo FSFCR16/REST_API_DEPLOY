@@ -1,4 +1,4 @@
-const z = require("zod");
+import z from "zod";
 
 const movieShcema = z.object({
   title: z.string({
@@ -26,15 +26,10 @@ const movieShcema = z.object({
   ),
 });
 
-function validatedMovie(object) {
+export function validatedMovie(object) {
   return movieShcema.safeParseAsync(object);
 }
 
-function validatedPartialMovies(object) {
+export function validatedPartialMovies(object) {
   return movieShcema.partial().safeParseAsync(object); // El metodo partial movie lo que hace es que todos las propiedades sean opcionales
 }
-
-module.exports = {
-  validatedMovie,
-  validatedPartialMovies,
-};

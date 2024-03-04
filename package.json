@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index/api_rest.js",
+  "type": "module",
   "scripts": {
     "dev": "nodemon express.js",
     "start": "node index/api_rest.js",
