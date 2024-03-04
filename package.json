@@ -5,6 +5,7 @@
   "main": "express/api_rest.js",
   "scripts": {
     "dev": "nodemon express.js",
+    "start": "node api_rest.js",
     "dev:2": "nodemon api_rest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
