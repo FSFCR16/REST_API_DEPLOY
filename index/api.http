@@ -1,0 +1,37 @@
+GET http://127.0.0.1:4000/movies
+
+### RECUPERAR PELICULA CON ID
+
+GET http://127.0.0.1:4000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+
+### RECUPERAR TODAS LAS PELICULAS POR GENERO
+
+GET http://127.0.0.1:4000/movies?genre=Action
+
+
+### CREAR UNA PELICULA
+
+POST http://127.0.0.1:4000/movies
+Content-Type: application/json
+
+{
+  "CAREPETO":133123,
+  "title": "the Godfather",
+  "year": 1975,
+  "director":"james",
+  "poster": "https://img.fruugo.com/4/49/14441494_max.jpg",
+  "genre": [
+    "Drama"
+  ],
+  "duration": 23,
+  "rate": 8.5
+}
+
+### ACTUALIZAR UNA PRATE DE LA PELICULA
+
+PATCH http://127.0.0.1:4000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+Content-Type: application/json
+
+{
+  "year": 1993
+}
