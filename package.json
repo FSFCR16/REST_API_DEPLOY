@@ -2,7 +2,7 @@
   "name": "proyecto",
   "version": "1.0.0",
   "description": "",
-  "main": "express/api_rest.js",
+  "main": "index/api_rest.js",
   "scripts": {
     "dev": "nodemon express.js",
     "start": "node api_rest.js",
