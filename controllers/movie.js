@@ -1,4 +1,5 @@
-import { MovieModel } from "../models/movie.js";
+// import { MovieModel } from "../models/local-file-system/movie.js";
+import { MovieModel } from "../models/mysql/mysql.js";
 import { validatedMovie, validatedPartialMovies } from "../schemas/schemas.js";
 
 const accces = ["http://localhost:8080", "http://localhost:8081"];
@@ -9,8 +10,8 @@ export class MovieControllers {
     if (accces.includes(origin) || !origin) {
       res.header("Access-Control-Allow-Origin", origin);
     }
+
     const { genre } = req.query;
-    console.log(genre);
     const movies = await MovieModel.getGenre({ genre: genre });
     res.json(movies);
   }
