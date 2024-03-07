@@ -1,19 +1,22 @@
 import express, { json } from "express";
 import { readJSON } from "../utils/utils.js";
-import { moviesRouter } from "../routes/movies-routes.js";
+import { createMovieRouter } from "../routes/movies-routes.js";
 
-const app = express();
-const movies = readJSON("../index/movies.json");
-const PORT = process.env.PORT ?? 4000;
-const accces = ["http://localhost:8080", "http://localhost:8081"];
+export const createApp = ({ movieModel }, message) => {
+  const app = express();
+  const movies = readJSON("../index/movies.json");
+  const PORT = process.env.PORT ?? 4000;
 
-app.use(json());
-app.disable("x-powered-by");
-app.use("/movies", moviesRouter);
+  app.use(json());
+  app.disable("x-powered-by");
+  app.use("/movies", createMovieRouter({ movieModel }));
 
-app.listen(PORT, () => {
-  console.log(`El servidor esta siendo escuchado en http://localhost:${PORT}`);
-});
+  app.listen(PORT, () => {
+    console.log(
+      `El servidor esta siendo escuchado en http://localhost:${PORT}, sever ${message}`
+    );
+  });
+};
 
 // Idempotencia: Propiedad de realizar una accion varias veces y aun asi conseguir el mismo resultado
 

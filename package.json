@@ -7,6 +7,8 @@
   "scripts": {
     "dev": "nodemon express.js",
     "start": "node index/api_rest.js",
+    "start:2": "node --watch server-with-local.js",
+    "start:3": "node --watch server-with-mysql.js",
     "dev:2": "nodemon api_rest.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
