@@ -32,9 +32,9 @@ export class MovieModel {
   }
 
   static async delete({ id }) {
+    console.log(id);
     const movie = movies.findIndex((m) => m.id === id);
-    if (movieIndex === -1) return false;
-
+    if (movie === -1) return false;
     const movieBorrada = movies.splice(movie, 1);
 
     return true;
@@ -54,11 +54,9 @@ export class MovieModel {
 
     return updateMovie;
   }
-
-  static async options({ path }) {
-    if (accces.includes(path) || !path) {
-      res.header("Access-Control-Allow-Origin", path);
-      res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-    }
-  }
 }
+
+// Utilización de encabezados personalizados en la solicitud.
+// Uso de métodos HTTP no simples, como PUT, DELETE, etc.
+// Incluir ciertos tipos de contenido en la solicitud, como JSON, etc.
+// Cuando se realiza una solicitud CORS que se considera "no simple", el navegador envía automáticamente una solicitud OPTIONS previa al mismo endpoint para verificar si el servidor acepta la solicitud real con los encabezados y el método especificados. Esta solicitud OPTIONS previa es el preflight.

@@ -11,6 +11,7 @@ export class MovieControllers {
 
   getGenre = async (req, res) => {
     const origin = req.header("origin");
+    console.log(origin);
     if (accces.includes(origin) || !origin) {
       res.header("Access-Control-Allow-Origin", origin);
     }
@@ -58,10 +59,10 @@ export class MovieControllers {
       res.header("Access-Control-Allow-Origin", origin);
     }
     const { id } = req.params;
-    const movie = await this.movieModel.delete(id);
+    const movie = await this.movieModel.delete({ id: id });
 
     if (movie) {
-      res.status(200).json({ message: "Moive delete" });
+      return res.status(200).json({ message: "Moive delete" });
     }
 
     res.status(404).json({ message: "movie not found" });
@@ -69,7 +70,10 @@ export class MovieControllers {
 
   options = async (req, res) => {
     const origin = req.header("origin");
-    this.movieModel.options(origin);
+    if (accces.includes(origin) || !origin) {
+      res.header("Access-Control-Allow-Origin", origin);
+      res.header("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+    }
     res.sendStatus(200);
   };
 }
